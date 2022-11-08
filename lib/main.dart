@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/secondpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,13 +28,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  double _currentValue=0;
+  double _currentValue=100;
   double counter=50;
   double bmi=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Colors.red,
       appBar: AppBar(
         title:
         Center(child: Text("BMI CALCULATOR"),),
@@ -147,8 +149,8 @@ class _HomepageState extends State<Homepage> {
 
             child: Column(
               children: [
-                Text("BMI",style: TextStyle(fontSize: 40, fontFamily:"arial"),),
-                Text(bmi.round().toString(),style: TextStyle(fontSize: 50),),
+                 Text("Calculate BMI",style: TextStyle(fontSize: 40, fontFamily:"arial"),),
+                // Text(bmi.round().toString(),style: TextStyle(fontSize: 50),),
                 FloatingActionButton(
                     child: Center(child: Icon(Icons.control_point_sharp)),
                     backgroundColor: Colors.deepPurpleAccent,
@@ -159,10 +161,13 @@ class _HomepageState extends State<Homepage> {
 
                       });
                       bmi=(counter*10000)/(_currentValue*_currentValue);
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>SecondPage(bmi:bmi)));
+
                     }
                 ),
               ],
             ),
+
           ),
         ],
 
